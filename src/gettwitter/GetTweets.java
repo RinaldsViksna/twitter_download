@@ -6,30 +6,33 @@ public class GetTweets {
 	static int i = 0;
 	public static void main(String[] argv){
 		
-		Log.log("Started..");
+		Log.log("Started...");
 		
 		
-	    StatusListener listener = new StatusListener(){
-	    	
-	        public void onStatus(Status status) {
-	            //System.out.println(status.getUser().getName() + " : " + status.getText());
-	        	i = i + 1;
-	            System.out.println(i);
-	            System.out.println("Name " + 
-	            	status.getUser().getName() + " \n Location " + 
-	            	status.getUser().getLocation() + " \n Place " + 
-	            	//status.getPlace().getCountryCode()  + " " + 
-	            	status.getPlace() + " \n Text " + 
-	            	status.getText() + " \n Lang: " + 
-	            	status.getLang() + " \n Id: " +
-	            	status.getId());
-	            
-	        }
-	        public void onDeletionNotice(StatusDeletionNotice statusDeletionNotice) {}
-	        public void onTrackLimitationNotice(int numberOfLimitedStatuses) {}
-	        public void onException(Exception ex) {
-	            ex.printStackTrace();
-	        }
+		StatusListener listener = new StatusListener(){
+	
+		public void onStatus(Status status) {
+		//System.out.println(status.getUser().getName() + " : " + status.getText());
+			i = i + 1;
+//			Log.log(i + "Name " + 
+//				status.getUser().getName() + " \n Location " + 
+//				status.getUser().getLocation() + " \n Place " + 
+//				//status.getPlace().getCountryCode()  + " " + 
+//				status.getPlace() + " \n Text " + 
+//				status.getText() + " \n Lang: " + 
+//				status.getLang() + " \n Id: " +
+//				status.getId() + " \n Full: " +
+//				status.toString());
+//			System.out.println(i + " ");
+//			System.out.println(status.toString());
+			Tweet tweet = new Tweet(status);
+			tweet.save();
+		}
+		public void onDeletionNotice(StatusDeletionNotice statusDeletionNotice) {}
+		public void onTrackLimitationNotice(int numberOfLimitedStatuses) {}
+		public void onException(Exception ex) {
+			ex.printStackTrace();
+		}
 			@Override
 			public void onScrubGeo(long arg0, long arg1) {}
 			@Override

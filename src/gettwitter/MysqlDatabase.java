@@ -24,7 +24,7 @@ public final class MysqlDatabase {
 			this.dbConnection	=	
 				DriverManager.getConnection(DB_CONNECTION+DB_NAME+"?useUnicode=true&characterEncoding=utf-8",DB_USER,DB_PASSWORD);	
 		}	catch	(ClassNotFoundException | SQLException	e)	{	
-			Log.log(e.getMessage());	
+			Log.log("dbconnection "+ e.getMessage());	
 		}
 	}
 	public static MysqlDatabase openConnection(){
