@@ -40,7 +40,10 @@ public class Tweet {
 	
 	public boolean save(){
 		// Papildus pārbaudu lietotāja uzstādīto valodu
-		if ( !user.getLang().equals("lv") ){
+		if ( !(user.getLang().equals("lv") || 
+				user.getLang().equals("en") || 
+				user.getLang().equals("ru") || 
+				user.getLang().equals("en-gb")) ){
 			System.out.println("lang " + user.getLang()+" un text ir " + text);
 			return false;
 		}
